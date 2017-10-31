@@ -5,10 +5,9 @@ const util = require('util');
 
 // Création d'une application ExpressJS
 const app = express();
+const collaborateur = require('./CollaborateurController');
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-});
+app.get('/collaborateurs', collaborateur.findAll);
 
 /*
  Configuration

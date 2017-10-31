@@ -1,6 +1,3 @@
-{
-    'use strict';
-
     const mongoose = require('mongoose');
 
     const collaborateurSchema = new mongoose.Schema({
@@ -55,5 +52,4 @@
     const collaborateurModel = mongoose.model('Collaborateur', collaborateurSchema);
 
     module.exports = collaborateurModel;
-}
 
