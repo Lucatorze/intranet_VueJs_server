@@ -2,12 +2,20 @@ require('colors');
 const express = require('express');
 const mongoose = require('mongoose');
 const util = require('util');
+const bodyParser = require('body-parser');
 
 // Création d'une application ExpressJS
 const app = express();
+
+app.use('/', bodyParser.json());
+
 const collaborateur = require('./CollaborateurController');
 
 app.get('/collaborateurs', collaborateur.findAll);
+app.get('/collaborateurs/:id', collaborateur.findById);
+app.post('/collaborateur', collaborateur.create);
+app.put('/collaborateur/:id', collaborateur.update);
+app.delete('/collaborateur/:id', collaborateur.delete);
 
 /*
  Configuration
