@@ -2,12 +2,15 @@ require('colors');
 const express = require('express');
 const mongoose = require('mongoose');
 const util = require('util');
+const cors = require('cors')
 const bodyParser = require('body-parser');
 
 // Création d'une application ExpressJS
 const app = express();
 
 app.use('/', bodyParser.json());
+app.use(cors())
+app.options('*', cors());
 
 const collaborateur = require('./CollaborateurController');
 

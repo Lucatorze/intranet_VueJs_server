@@ -40,22 +40,22 @@ module.exports = {
                 if(collaborateur === null){
                     return res.status(500).json({error:1,message:'Collaborateur non trouvé'})
                 }
-                res.json(collaborateur)
+                return collaborateur
             })
-            .then(collaborateur => res.json({success:1, message: 'Collaborateur modifié', inserted: collaborateur}))
+            .then(collaborateur => res.json({success:1, message: 'Collaborateur modifié', updated: collaborateur}))
             .catch(err => res.status(500).json({error:1,message:err.message}));
     },
 
     delete : (req, res) => {
-        Collaborateur.findByIdAndRemove(req.params.id, {new:true})
+        Collaborateur.findByIdAndRemove(req.params.id)
             .exec()
             .then(collaborateur => {
                 if(collaborateur === null){
                     return res.status(500).json({error:1,message:'Collaborateur non trouvé'})
                 }
-                res.json(collaborateur)
+                return collaborateur
             })
-            .then(collaborateur => res.json({success:1, message: 'Collaborateur supprimé', inserted: collaborateur}))
+            .then(collaborateur => res.json({success:1, message: 'Collaborateur supprimé', deleted: collaborateur}))
             .catch(err => res.status(500).json({error:1,message:err.message}));
     }
 };
